@@ -1,0 +1,28 @@
+This file is intended to help the Blum Laser tool setter/checker not error out when using the broken tool detection on the DMU60 EVO
+The "FAN_BLUM" subprogram is to be called before the BTD "BL9908(0,-1,0.025,0)"
+
+Make sure that the .mpf code files are in the same directory as the one your running from
+
+Example 1:
+
+----------
+Call "FAN_BLUM"
+CYCLE800()
+G0 SUPA Z-0.0043 D0
+G0 SUPA X-23.4485 Y-16.9963
+D1
+G153 B0. C=DC(0.)
+S2500 M3
+BL9908(0,-1,0.025,0)
+D1
+M5
+M1
+----------
+
+
+Example 2(simplified):
+
+
+Call "FAN_BLUM"
+Call "TBD_CHECK_C0_B0"
+
